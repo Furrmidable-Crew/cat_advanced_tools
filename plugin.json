@@ -1,10 +1,10 @@
 {
-    "name": "My plugin",
+    "name": "C.A.T. - Cat Advanced Tools",
     "version": "0.0.1",
-    "description": "Description of my_plugin.",
-    "author_name": "Me",
-    "author_url": "https://mywebsite.me",
-    "plugin_url": "https://github.com/my_name/my_plugin",
-    "tags": "cat, template, example",
-    "thumb": "https://raw.githubusercontent.com/my_repo_path/my_plugin.png"
+    "description": "This plugin allows quickly editing some core settings such as the prompt prefix, the amount of memories retrieved and recall accuracy.",
+    "author_name": "FritzTheCat",
+    "author_url": "",
+    "plugin_url": "https://github.com/Furrmidable-Crew/cat_advanced_tools",
+    "tags": "prompt, memory, settings, advanced",
+    "thumb": ""
 }
