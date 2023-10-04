@@ -1,26 +1,27 @@
-# Fast Setup
+# C.A.T. - Cat Advanced Tools
 
-[![awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=awesome+plugin&color=383938&style=for-the-badge&logo=cheshire_cat_ai)](https://)  
-[![Awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=Awesome+plugin&color=000000&style=for-the-badge&logo=cheshire_cat_ai)](https://)  
 [![awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=awesome+plugin&color=F4F4F5&style=for-the-badge&logo=cheshire_cat_black)](https://)
 
-Write here all the useful information about your plugin.
+This plugin gives you fast access to a few core settings.
 
-This repository is the template to automate the release of official Cheshire Cat AI plugins. 
+Currently supoprted settings:
+- prompt prefix: change the instruction prompt that tells the language model how to behave;
+- episodic memory k: change the number of episodic memories retrieved and used in the context;
+- episodic memory threshold: change the minimum similarity score that episodic memories should have to be used as context;
+- declarative memory k: change the number of declarative memories retrieved and used in the context;
+- declarative memory threshold: change the minimum similarity score that declarative memories should have to be used as context;
+- procedural memory k: change the number of tools retrieved to be potentially used;
+- episodic memory threshold: change the minimum similarity score that tools should have to be considered;
+
+## Installation
+
+1. Navigate to the `Plugins` page;
+2. Scroll until you find the "C.A.T. - Cat Advanced Tools" plugin;
+3. Click on `Install
 
 ## Usage
 
-1. Create a new repository clicking on the `Use this template` button.
-2. Clone your new repo directly in the Cat's `plugins` folder.
-3. Run the `setup.py` script:
-```bash
-python setup.py
-```
-The script will prompt you to write the name of your plugin and make an initial setup setting the name in the files.
-
-4. Start developing!
-
-> **Important**
-> A new release of your plugin is triggered every time you set a new `version` in the `plugin.json` file.
-> Please, remember to set it correctly every time to want to release an update.
-
+1. Navigate to the `Plugins` page;
+2. Scroll until you find the "C.A.T. - Cat Advanced Tools" plugin;
+3. Click on the "Settings" icon on the bottom right of the plugin card;
+4. Edit the available settings and save.
