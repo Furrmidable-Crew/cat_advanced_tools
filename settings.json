@@ -5,5 +5,5 @@
     "declarative_memory_k": 3,
     "declarative_memory_threshold": 0.7,
     "procedural_memory_k": 3,
-    "procedural_memory_threshold": 0.7
+    "procedural_memory_threshold": 0
 }
