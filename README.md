@@ -12,6 +12,8 @@ Currently supported settings:
 - declarative memory threshold: change the minimum similarity score that declarative memories should have to be used as context;
 - procedural memory k: change the number of tools retrieved to be potentially used;
 - episodic memory threshold: change the minimum similarity score that tools should have to be considered;
+- human name: change the name that appears in the conversation history. Hence, the Cat will always call that way.
+
 
 ## Installation
 
