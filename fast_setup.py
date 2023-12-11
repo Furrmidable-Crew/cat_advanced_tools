@@ -1,22 +1,9 @@
-import json
-import os.path
-
 from cat.mad_hatter.decorators import tool, hook
-
-
-def get_settings():
-    if os.path.isfile("cat/plugins/cat_advanced_tools/settings.json"):
-        with open("cat/plugins/cat_advanced_tools/settings.json", "r") as json_file:
-            settings = json.load(json_file)
-    else:
-        with open("cat/plugins/cat_advanced_tools_main/settings.json", "r") as json_file:
-            settings = json.load(json_file)
-    return settings
-
+from cat.log import log
 
 @hook
 def agent_prompt_prefix(prefix, cat):
-    settings = get_settings()
+    settings = cat.mad_hatter.get_plugin().load_settings()
     prefix = settings["prompt_prefix"]
 
     return prefix
@@ -24,7 +11,7 @@ def agent_prompt_prefix(prefix, cat):
 
 @hook
 def before_cat_recalls_episodic_memories(default_episodic_recall_config, cat):
-    settings = get_settings()
+    settings = cat.mad_hatter.get_plugin().load_settings()
     default_episodic_recall_config["k"] = settings["episodic_memory_k"]
     default_episodic_recall_config["threshold"] = settings["episodic_memory_threshold"]
 
@@ -33,7 +20,7 @@ def before_cat_recalls_episodic_memories(default_episodic_recall_config, cat):
 
 @hook
 def before_cat_recalls_declarative_memories(default_declarative_recall_config, cat):
-    settings = get_settings()
+    settings = cat.mad_hatter.get_plugin().load_settings()
     default_declarative_recall_config["k"] = settings["declarative_memory_k"]
     default_declarative_recall_config["threshold"] = settings["declarative_memory_threshold"]
 
@@ -42,8 +29,17 @@ def before_cat_recalls_declarative_memories(default_declarative_recall_config, c
 
 @hook
 def before_cat_recalls_procedural_memories(default_procedural_recall_config, cat):
-    settings = get_settings()
+    settings = cat.mad_hatter.get_plugin().load_settings()
     default_procedural_recall_config["k"] = settings["procedural_memory_k"]
     default_procedural_recall_config["threshold"] = settings["procedural_memory_threshold"]
 
     return default_procedural_recall_config
+
+
+@hook
+def before_agent_starts(agent_input, cat):
+    settings = cat.mad_hatter.get_plugin().load_settings()
+    user_name = settings["user_name"]
+    agent_input["chat_history"] = agent_input["chat_history"].replace("- Human:", f"- {user_name}:")
+
+    return agent_input
