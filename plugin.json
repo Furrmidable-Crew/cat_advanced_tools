@@ -1,6 +1,6 @@
 {
     "name": "C.A.T. - Cat Advanced Tools",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "This plugin allows quickly editing some core settings such as the prompt prefix, the amount of memories retrieved and recall accuracy.",
     "author_name": "FritzTheCat",
     "author_url": "",
