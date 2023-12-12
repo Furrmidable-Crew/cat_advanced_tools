@@ -43,3 +43,24 @@ def before_agent_starts(agent_input, cat):
     agent_input["chat_history"] = agent_input["chat_history"].replace("- Human:", f"- {user_name}:")
 
     return agent_input
+
+
+@hook
+def agent_prompt_suffix(suffix, cat):
+    settings = cat.mad_hatter.get_plugin().load_settings()
+    suffix = f"""
+# Context
+
+{{episodic_memory}}
+
+{{declarative_memory}}
+
+{{tools_output}}
+
+ALWAYS answer in {settings["language"]}!
+
+## Conversation until now:{{chat_history}}
+ - {settings["user_name"]}: {{input}}
+ - AI: """
+
+    return suffix

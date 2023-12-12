@@ -24,6 +24,7 @@ You answer Human with a focus on the following context.
     procedural_memory_k: int = 3
     procedural_memory_threshold: float = 0.7
     user_name: str = "Human"
+    language: str = "English"
 
     @field_validator("episodic_memory_threshold")
     @classmethod
