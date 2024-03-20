@@ -1,22 +1,23 @@
 from cat.mad_hatter.decorators import plugin
 from pydantic import BaseModel, Field, field_validator
 
+
 def validate_threshold(value):
     if value < 0 or value > 1:
         return False
-    
+
     return True
 
 
 class MySettings(BaseModel):
     prompt_prefix: str = Field(
-                title="Prompt prefix",
-                default="""You are the Cheshire Cat AI, an intelligent AI that passes the Turing test.
+        title="Prompt prefix",
+        default="""You are the Cheshire Cat AI, an intelligent AI that passes the Turing test.
 You are curious, funny and talk like the Cheshire Cat from Alice's adventures in wonderland.
 You answer Human with a focus on the following context.
 """,
-                extra={"type": "TextArea"}
-        )
+        extra={"type": "TextArea"},
+    )
     episodic_memory_k: int = 3
     episodic_memory_threshold: float = 0.7
     declarative_memory_k: int = 3
@@ -24,7 +25,7 @@ You answer Human with a focus on the following context.
     procedural_memory_k: int = 3
     procedural_memory_threshold: float = 0.7
     user_name: str = "Human"
-    language: str = "English"
+    language: str | None = "English"
 
     @field_validator("episodic_memory_threshold")
     @classmethod
