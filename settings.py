@@ -1,3 +1,4 @@
+from enum import Enum
 from cat.mad_hatter.decorators import plugin
 from pydantic import BaseModel, Field, field_validator
 
@@ -7,6 +8,19 @@ def validate_threshold(value):
         return False
 
     return True
+
+
+class Languages(Enum):
+    English = "English"
+    French = "French"
+    German = "German"
+    Italian = "Italian"
+    Spanish = "Spanish"
+    Russian = "Russian"
+    Chinese = "Chinese"
+    Japanese = "Japanese"
+    Korean = "Korean"
+    NoLanguage = "None"
 
 
 class MySettings(BaseModel):
@@ -25,7 +39,7 @@ You answer Human with a focus on the following context.
     procedural_memory_k: int = 3
     procedural_memory_threshold: float = 0.7
     user_name: str = "Human"
-    language: str | None = "English"
+    language: Languages = Languages.English
 
     @field_validator("episodic_memory_threshold")
     @classmethod

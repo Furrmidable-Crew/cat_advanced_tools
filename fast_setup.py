@@ -65,10 +65,10 @@ def agent_prompt_suffix(suffix, cat):
 {{tools_output}}
 """
 
-    if settings["language"]:
+    if settings["language"] != "None":
         suffix += f"""
-        ALWAYS answer in {settings["language"]}!
-        """
+ALWAYS answer in {settings["language"]}
+"""
 
     suffix += f"""
 ## Conversation until now:{{chat_history}}
