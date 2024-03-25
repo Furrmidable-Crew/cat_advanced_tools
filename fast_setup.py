@@ -1,6 +1,7 @@
 from cat.mad_hatter.decorators import tool, hook
 from cat.log import log
 
+
 @hook
 def agent_prompt_prefix(prefix, cat):
     settings = cat.mad_hatter.get_plugin().load_settings()
@@ -22,7 +23,9 @@ def before_cat_recalls_episodic_memories(default_episodic_recall_config, cat):
 def before_cat_recalls_declarative_memories(default_declarative_recall_config, cat):
     settings = cat.mad_hatter.get_plugin().load_settings()
     default_declarative_recall_config["k"] = settings["declarative_memory_k"]
-    default_declarative_recall_config["threshold"] = settings["declarative_memory_threshold"]
+    default_declarative_recall_config["threshold"] = settings[
+        "declarative_memory_threshold"
+    ]
 
     return default_declarative_recall_config
 
@@ -31,7 +34,9 @@ def before_cat_recalls_declarative_memories(default_declarative_recall_config, c
 def before_cat_recalls_procedural_memories(default_procedural_recall_config, cat):
     settings = cat.mad_hatter.get_plugin().load_settings()
     default_procedural_recall_config["k"] = settings["procedural_memory_k"]
-    default_procedural_recall_config["threshold"] = settings["procedural_memory_threshold"]
+    default_procedural_recall_config["threshold"] = settings[
+        "procedural_memory_threshold"
+    ]
 
     return default_procedural_recall_config
 
@@ -40,7 +45,9 @@ def before_cat_recalls_procedural_memories(default_procedural_recall_config, cat
 def before_agent_starts(agent_input, cat):
     settings = cat.mad_hatter.get_plugin().load_settings()
     user_name = settings["user_name"]
-    agent_input["chat_history"] = agent_input["chat_history"].replace("- Human:", f"- {user_name}:")
+    agent_input["chat_history"] = agent_input["chat_history"].replace(
+        "- Human:", f"- {user_name}:"
+    )
 
     return agent_input
 
@@ -56,11 +63,16 @@ def agent_prompt_suffix(suffix, cat):
 {{declarative_memory}}
 
 {{tools_output}}
+"""
 
-ALWAYS answer in {settings["language"]}!
+    if settings["language"] != "None":
+        suffix += f"""
+ALWAYS answer in {settings["language"]}
+"""
 
+    suffix += f"""
 ## Conversation until now:{{chat_history}}
- - {settings["user_name"]}: {{input}}
- - AI: """
+- {settings["user_name"]}: {{input}}
+- AI: """
 
     return suffix
