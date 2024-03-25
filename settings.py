@@ -38,7 +38,7 @@ You answer Human with a focus on the following context.
     declarative_memory_threshold: float = 0.7
     procedural_memory_k: int = 3
     procedural_memory_threshold: float = 0.7
-    user_name: str = "Human"
+    user_name: str | None = "Human"
     language: Languages = Languages.English
 
     @field_validator("episodic_memory_threshold")

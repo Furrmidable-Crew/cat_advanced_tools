@@ -72,7 +72,7 @@ ALWAYS answer in {settings["language"]}
 
     suffix += f"""
 ## Conversation until now:{{chat_history}}
-- {settings["user_name"]}: {{input}}
+- {settings["user_name"] if settings["user_name"] != "" else "Human" }: {{input}}
 - AI: """
 
     return suffix
