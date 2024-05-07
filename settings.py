@@ -40,6 +40,8 @@ You answer Human with a focus on the following context.
     procedural_memory_threshold: float = 0.7
     user_name: str | None = "Human"
     language: Languages = Languages.English
+    chunk_size: int = 256
+    chunk_overlap: int = 64
 
     @field_validator("episodic_memory_threshold")
     @classmethod
