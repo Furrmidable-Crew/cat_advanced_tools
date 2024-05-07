@@ -76,3 +76,10 @@ ALWAYS answer in {settings["language"]}
 - AI: """
 
     return suffix
+
+@hook
+def rabbithole_instantiates_splitter(text_splitter, cat):
+    settings = cat.mad_hatter.get_plugin().load_settings()
+    text_splitter._chunk_size = settings["chunk_size"]
+    text_splitter._chunk_overlap = settings["chunk_overlap"]
+    return text_splitter

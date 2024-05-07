@@ -7,5 +7,7 @@
     "procedural_memory_k": 3,
     "procedural_memory_threshold": 0.7,
     "user_name": "Human",
-    "language": "English"
+    "language": "English",
+    "chunk_size": 256,
+    "chunk_overlap": 64
 }
