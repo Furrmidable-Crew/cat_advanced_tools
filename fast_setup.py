@@ -55,6 +55,7 @@ def before_agent_starts(agent_input, cat):
 @hook
 def agent_prompt_suffix(suffix, cat):
     settings = cat.mad_hatter.get_plugin().load_settings()
+    username = settings["user_name"] if settings["user_name"] != "" else "Human"
     suffix = f"""
 # Context
 
@@ -65,14 +66,18 @@ def agent_prompt_suffix(suffix, cat):
 {{tools_output}}
 """
 
-    if settings["language"] != "None":
+    if settings["language"] == "Human":
+        suffix += f"""
+ALWAYS answer in the {username}'s language
+"""
+    elif settings["language"] not in ["None", "Human"]:
         suffix += f"""
 ALWAYS answer in {settings["language"]}
 """
 
     suffix += f"""
 ## Conversation until now:{{chat_history}}
-- {settings["user_name"] if settings["user_name"] != "" else "Human" }: {{input}}
+- {username}: {{input}}
 - AI: """
 
     return suffix

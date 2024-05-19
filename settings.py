@@ -21,6 +21,7 @@ class Languages(Enum):
     Japanese = "Japanese"
     Korean = "Korean"
     NoLanguage = "None"
+    Human = "Human"
 
 
 class MySettings(BaseModel):
