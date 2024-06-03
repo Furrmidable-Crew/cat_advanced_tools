@@ -41,15 +41,15 @@ def before_cat_recalls_procedural_memories(default_procedural_recall_config, cat
     return default_procedural_recall_config
 
 
-@hook
-def before_agent_starts(agent_input, cat):
-    settings = cat.mad_hatter.get_plugin().load_settings()
-    user_name = settings["user_name"]
-    agent_input["chat_history"] = agent_input["chat_history"].replace(
-        "- Human:", f"- {user_name}:"
-    )
-
-    return agent_input
+#@hook
+#def before_agent_starts(agent_input, cat):
+#    settings = cat.mad_hatter.get_plugin().load_settings()
+#    user_name = settings["user_name"]
+#    agent_input["chat_history"] = agent_input["chat_history"].replace(
+#        "- Human:", f"- {user_name}:"
+#    )
+#
+#    return agent_input
 
 
 @hook
@@ -76,9 +76,7 @@ ALWAYS answer in {settings["language"]}
 """
 
     suffix += f"""
-## Conversation until now:{{chat_history}}
-- {username}: {{input}}
-- AI: """
+## Conversation until now:"""
 
     return suffix
 
