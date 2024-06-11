@@ -4,9 +4,8 @@ from pydantic import BaseModel, Field, field_validator
 
 
 def validate_threshold(value):
-    if value < 0 or value > 1:
+    if value <= 0:
         return False
-
     return True
 
 
@@ -48,19 +47,19 @@ You answer Human with a focus on the following context.
     @classmethod
     def episodic_memory_threshold_validator(cls, threshold):
         if not validate_threshold(threshold):
-            raise ValueError("Episodic memory threshold must be between 0 and 1")
+            raise ValueError("Episodic memory threshold must be greater than 1")
 
     @field_validator("declarative_memory_threshold")
     @classmethod
     def declarative_memory_threshold_validator(cls, threshold):
         if not validate_threshold(threshold):
-            raise ValueError("Declarative memory threshold must be between 0 and 1")
+            raise ValueError("Declarative memory threshold must be greater than 1")
 
     @field_validator("procedural_memory_threshold")
     @classmethod
     def procedural_memory_threshold_validator(cls, threshold):
         if not validate_threshold(threshold):
-            raise ValueError("Procedural memory threshold must be between 0 and 1")
+            raise ValueError("Procedural memory threshold must be greater than 1")
 
 
 @plugin
